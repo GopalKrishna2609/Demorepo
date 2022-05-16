@@ -1,0 +1,26 @@
+CREATE TABLE EmployeeDetails(
+EmployeeID int,
+EmployeeName varchar(30),
+EmployeeAge int,
+EmployeeDept varchar(20));
+
+CREATE TABLE EmployeeEdu(
+EmployeeEduID int,
+EmployeeID int,
+Qualification varchar(10)); 
+
+CREATE TABLE JobHistory(
+EmployeeJobID int,
+EmployeeID int,
+JobTitle varchar(20) );
+
+INSERT INTO EmployeeDetails(EmployeeName,EmployeeAge,EmployeeDept)VALUES('Amit',49,'HR')
+INSERT INTO EmployeeEdu(EmployeeID , Qualification)VALUES(4,'BCA')
+INSERT INTO JobHistory(EmployeeID,JobTitle)VALUES(2,'Trainee')
+
+SELECT * FROM EmployeeDetails
+SELECT * FROM EmployeeEdu
+SELECT * FROM JobHistory
+
+DROP TABLE EmployeeEdu;
+DELETE FROM EmployeeDetails
