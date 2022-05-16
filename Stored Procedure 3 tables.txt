@@ -1,0 +1,27 @@
+INSERT INTO EmployeeDetails(EmployeeName,EmployeeAge,EmployeeDept)VALUES('Amit',49,'HR')
+INSERT INTO EmployeeEdu(EmployeeID , Qualification)VALUES(4,'BCA')
+INSERT INTO JobHistory(EmployeeID,JobTitle)VALUES(2,'Trainee')
+
+SELECT * FROM EmployeeDetails
+SELECT * FROM EmployeeEdu
+SELECT * FROM JobHistory
+
+DROP TABLE EmployeeEdu
+DELETE FROM EmployeeDetails
+
+ALTER PROCEDURE USP_SaveEmployee
+@EmployeeName VARCHAR(30),
+@EmployeePhone CHAR(10),
+@EmployeeAddress VARCHAR(20),
+@Qualification VARCHAR(10),
+@JobTitle VARCHAR(20)
+AS
+BEGIN
+DECLARE @EID int
+SET @EID = @@IDENTITY
+INSERT INTO EmployeeDetails(EmployeeName,EmployeePhone,EmployeeAddress)VALUES(@EmployeeName,@EmployeePhone,@EmployeeAddress)
+INSERT INTO EmployeeEdu(EmployeeID,Qualification)VALUES(@@IDENTITY, @Qualification)
+INSERT INTO JobHistory (EmployeeID,JobTitle)VALUES(@EID, @JobTitle)
+END
+
+EXEC  USP_SaveEmployee 'HARPREET SINGH','123456789','RAIPUR','BOITECH','MANAGER'
